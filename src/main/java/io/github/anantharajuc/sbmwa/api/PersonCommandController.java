@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.controller;
+package io.github.anantharajuc.sbmwa.api;
 
 import javax.validation.Valid;
 

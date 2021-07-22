@@ -38,6 +38,25 @@ $ mvn clean package
 $ java -jar target/Spring-Boot-Minimal-Web-App-0.0.1-SNAPSHOT.jar
 ```
 
+Now you should expect output like this:
+
+```JavaScript
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ spring-boot-minimal-web-app ---
+[INFO] Building jar: \Spring-Boot-Minimal-Web-App\target\spring-boot-minimal-web-app-latest.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:2.5.2:repackage (repackage) @ spring-boot-minimal-web-app ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 47.299 s
+[INFO] Finished at: 2021-07-22T19:00:54+05:30
+[INFO] ------------------------------------------------------------------------
+```
+
 To shutdown the jar, follow the below mentioned steps on a Windows machine.
 
 *	In command prompt execute the **jcmd** command to print a list of all running Java processes
