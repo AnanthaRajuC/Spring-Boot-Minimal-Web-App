@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.domain.model;
+package io.github.anantharajuc.sbmwa.domain.model.common;
 
 import java.io.Serializable;
 

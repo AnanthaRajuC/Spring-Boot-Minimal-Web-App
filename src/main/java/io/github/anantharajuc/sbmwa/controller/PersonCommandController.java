@@ -22,6 +22,9 @@ import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.PersonServiceImpl;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name="PersonCommandController", description = "Set of public APIs, for managing Person.")
 @RestController
 @RequestMapping("/api/")
 public class PersonCommandController 

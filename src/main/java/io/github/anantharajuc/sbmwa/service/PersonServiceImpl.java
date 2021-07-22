@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import io.github.anantharajuc.sbmwa.domain.model.Address;
 import io.github.anantharajuc.sbmwa.domain.model.Books;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
-import io.github.anantharajuc.sbmwa.exception.ResourceNotFoundException;
+import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
 import io.github.anantharajuc.sbmwa.repository.BooksRepository;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;

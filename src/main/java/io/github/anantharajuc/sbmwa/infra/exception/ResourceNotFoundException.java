@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.exception;
+package io.github.anantharajuc.sbmwa.infra.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

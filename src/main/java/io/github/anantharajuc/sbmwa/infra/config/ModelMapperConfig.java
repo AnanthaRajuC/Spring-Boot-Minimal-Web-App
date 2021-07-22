@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.config;
+package io.github.anantharajuc.sbmwa.infra.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

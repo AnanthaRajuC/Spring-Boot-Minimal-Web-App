@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.PersonServiceImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name="PersonQueryController", description = "Set of public APIs, for querying Person.")
 @RestController
 @RequestMapping("/api/")
 public class PersonQueryController 
