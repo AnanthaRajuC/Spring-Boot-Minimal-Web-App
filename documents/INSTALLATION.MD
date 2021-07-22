@@ -27,15 +27,16 @@ $ cd Spring-Boot-Minimal-Web-App
 $ mvn spring-boot:run
 ```
 
-#### Running the application with Executable JAR
+#### Building and running the application with Executable JAR
 
-The code can also be built into a jar and then executed/run. Once the jar is built, run the jar by double clicking on it or by using the command 
+The code can also be built into a jar and then executed/run. Once the jar is built, run the jar by double clicking on it or by using the command.
+
+##### Building the jar
 
 ```shell
 $ git clone https://github.com/AnanthaRajuC/Spring-Boot-Minimal-Web-App.git
 $ cd Spring-Boot-Minimal-Web-App
 $ mvn clean package
-$ java -jar target/Spring-Boot-Minimal-Web-App-0.0.1-SNAPSHOT.jar
 ```
 
 Now you should expect output like this:
@@ -55,6 +56,14 @@ Now you should expect output like this:
 [INFO] Total time: 47.299 s
 [INFO] Finished at: 2021-07-22T19:00:54+05:30
 [INFO] ------------------------------------------------------------------------
+```
+
+##### Running the jar
+
+Now it's the time to run the jar, and it's straightforward, just hit the following commands:
+
+```shell
+$ java -jar target/spring-boot-minimal-web-app-latest.jar
 ```
 
 To shutdown the jar, follow the below mentioned steps on a Windows machine.

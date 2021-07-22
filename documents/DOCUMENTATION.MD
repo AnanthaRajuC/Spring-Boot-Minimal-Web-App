@@ -4,4 +4,4 @@
 * 	[OpenAPI Description](http://localhost:8080/v3/api-docs) - `http://localhost:8080/v3/api-docs`
 * 	[Swagger](http://localhost:8080/swagger-ui.html) - `http://localhost:8080/swagger-ui.html`- Documentation & Testing
 
-<img src="images\swagger.PNG"/>
+<img src="images\swagger.png"/>
