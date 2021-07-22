@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.anantharajuc.sbmwa.model.Person;
+import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.PersonServiceImpl;
 

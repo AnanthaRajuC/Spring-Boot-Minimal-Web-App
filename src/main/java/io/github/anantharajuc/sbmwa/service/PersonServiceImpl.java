@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import io.github.anantharajuc.sbmwa.domain.model.Address;
+import io.github.anantharajuc.sbmwa.domain.model.Books;
+import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.exception.ResourceNotFoundException;
-import io.github.anantharajuc.sbmwa.model.Address;
-import io.github.anantharajuc.sbmwa.model.Books;
-import io.github.anantharajuc.sbmwa.model.Person;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
 import io.github.anantharajuc.sbmwa.repository.BooksRepository;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;

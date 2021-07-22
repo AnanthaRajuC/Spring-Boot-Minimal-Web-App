@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import io.github.anantharajuc.sbmwa.model.Person;
+import io.github.anantharajuc.sbmwa.domain.model.Person;
 
 public interface PersonService 
 {

@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.github.anantharajuc.sbmwa.model.Books;
+import io.github.anantharajuc.sbmwa.domain.model.Books;
 
 @Repository
 public interface BooksRepository extends JpaRepository<Books, Long>

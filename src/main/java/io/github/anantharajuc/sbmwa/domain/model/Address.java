@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.model;
+package io.github.anantharajuc.sbmwa.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.anantharajuc.sbmwa.model.Person;
-import io.github.anantharajuc.sbmwa.model.dto.PersonDTO;
+import io.github.anantharajuc.sbmwa.domain.dto.request.PersonCreateRequest;
+import io.github.anantharajuc.sbmwa.domain.dto.request.PersonUpdateRequest;
+import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.PersonServiceImpl;
 
@@ -42,11 +43,11 @@ public class PersonCommandController
      * @return the created person
      */
 	@PostMapping(path="/person", consumes = "application/json")
-    public ResponseEntity<Person> savePerson(@RequestBody PersonDTO personDTO) 
+    public ResponseEntity<Person> createPerson(@RequestBody PersonCreateRequest request) 
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
 
-		Person person = modelMapper.map(personDTO, Person.class);
+		Person person = modelMapper.map(request, Person.class);
 				
 		return new ResponseEntity<>(personServiceImpl.savePerson(person), headers, HttpStatus.CREATED);
     }
@@ -59,11 +60,11 @@ public class PersonCommandController
      * @throws ResourceNotFoundException if person not found.
      */
 	@PutMapping(value = "/person/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Person> updatePerson(@PathVariable("id") Long id, @Valid @RequestBody PersonDTO personDTO)
+	public ResponseEntity<Person> updatePerson(@PathVariable("id") Long id, @Valid @RequestBody PersonUpdateRequest request)
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
 
-		Person person = modelMapper.map(personDTO, Person.class);
+		Person person = modelMapper.map(request, Person.class);
 		
 		return new ResponseEntity<>(personServiceImpl.updatePerson(id, person), headers, HttpStatus.NO_CONTENT);	
 	}

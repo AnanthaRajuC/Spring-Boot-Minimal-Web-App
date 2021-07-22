@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.model;
+package io.github.anantharajuc.sbmwa.domain.model;
 
 import java.util.List;
 import javax.persistence.CascadeType;
