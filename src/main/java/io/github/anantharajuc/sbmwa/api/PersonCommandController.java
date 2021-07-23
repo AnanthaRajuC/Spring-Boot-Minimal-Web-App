@@ -20,13 +20,12 @@ import io.github.anantharajuc.sbmwa.domain.dto.request.PersonCreateRequest;
 import io.github.anantharajuc.sbmwa.domain.dto.request.PersonUpdateRequest;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
-import io.github.anantharajuc.sbmwa.service.PersonServiceImpl;
-
+import io.github.anantharajuc.sbmwa.service.impl.PersonServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name="PersonCommandController", description = "Set of public APIs, for managing Person.")
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/person")
 public class PersonCommandController 
 {
 	@Autowired
@@ -45,7 +44,7 @@ public class PersonCommandController
      * @param person. The person to create
      * @return the created person
      */
-	@PostMapping(path="/person", consumes = "application/json")
+	@PostMapping(consumes = "application/json")
     public ResponseEntity<Person> createPerson(@RequestBody PersonCreateRequest request) 
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
@@ -62,7 +61,7 @@ public class PersonCommandController
      * @param person. The person values to be updated
      * @throws ResourceNotFoundException if person not found.
      */
-	@PutMapping(value = "/person/{id}", consumes = "application/json", produces = "application/json")
+	@PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Person> updatePerson(@PathVariable("id") Long id, @Valid @RequestBody PersonUpdateRequest request)
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
@@ -78,7 +77,7 @@ public class PersonCommandController
      * @param id. The persons id.
      * @throws ResourceNotFoundException if the person is not found.
      */
-	@DeleteMapping("/person/{id}")
+	@DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deletePerson(@PathVariable("id") Long id) 
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 

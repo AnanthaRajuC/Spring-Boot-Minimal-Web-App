@@ -64,3 +64,17 @@ CREATE TABLE `books` (
   CONSTRAINT `FK5w75tx731o2t3abhgesnobgih` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `movies` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_modified_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `movie_details` varchar(255) NOT NULL,
+  `person_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `movies_person_fk` (`person_id`),
+  CONSTRAINT `movies_person_fk` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

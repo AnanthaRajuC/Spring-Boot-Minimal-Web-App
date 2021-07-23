@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.service;
+package io.github.anantharajuc.sbmwa.service.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,7 @@ import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
 import io.github.anantharajuc.sbmwa.repository.BooksRepository;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
+import io.github.anantharajuc.sbmwa.service.PersonService;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2

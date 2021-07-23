@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
-import io.github.anantharajuc.sbmwa.service.PersonServiceImpl;
+import io.github.anantharajuc.sbmwa.service.impl.PersonServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name="PersonQueryController", description = "Set of public APIs, for querying Person.")
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/person")
 public class PersonQueryController 
 {
 	@Autowired
@@ -33,7 +33,7 @@ public class PersonQueryController
      * 
      * @return List<Person> with all persons
      */
-	@GetMapping(path="/person", produces = "application/json")
+	@GetMapping(produces = "application/json")
     public ResponseEntity<List<Person>> getAllPersons() 
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
@@ -47,7 +47,7 @@ public class PersonQueryController
      * @param id. The persons id         
      * @return the person
      */
-	@GetMapping(value = "/person/{id}", produces = "application/json")
+	@GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<Person> getPerson(@PathVariable("id") Long id) 
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 

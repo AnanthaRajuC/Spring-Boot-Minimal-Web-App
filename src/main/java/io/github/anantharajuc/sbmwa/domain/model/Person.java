@@ -54,5 +54,8 @@ public class Person extends AuditEntity
 	
 	@OneToMany(targetEntity = Books.class,cascade = CascadeType.ALL)
     @JoinColumn(name="person_id",referencedColumnName="id")
-    List<Books> books;
+    private List<Books> books;
+	
+	@OneToMany(mappedBy="person")
+	private List<Movie> movies;
 }

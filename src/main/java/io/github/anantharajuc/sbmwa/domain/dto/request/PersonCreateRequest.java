@@ -4,10 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
 import java.util.Set;
 
 import io.github.anantharajuc.sbmwa.domain.model.Address;
 import io.github.anantharajuc.sbmwa.domain.model.Books;
+import io.github.anantharajuc.sbmwa.domain.model.Movie;
 import lombok.AccessLevel;
 
 @Getter
@@ -21,4 +23,5 @@ public class PersonCreateRequest
 	String mobileNumber;
 	Address address;
 	Set<Books> books;
-}
+	List<Movie> movies;
+} 

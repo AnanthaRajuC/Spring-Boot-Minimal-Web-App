@@ -24,3 +24,10 @@ INSERT INTO `person` (`name`,`email`,`mobile_number`,`address_id`) VALUES ('Jane
 
 INSERT INTO `books` (`title`,`person_id`) VALUES ('book21',1);
 INSERT INTO `books` (`title`,`person_id`) VALUES ('book11',1);
+
+--
+-- Data for table `orders`
+--
+
+INSERT INTO `movies` (`movie_details`,`person_id`) VALUES ('movie-1',1);
+INSERT INTO `movies` (`movie_details`,`person_id`) VALUES ('movie-2',1);
