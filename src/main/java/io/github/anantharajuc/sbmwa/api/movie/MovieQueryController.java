@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name="MovieQueryController", description = "Set of public APIs, for querying Movies.")
 @RestController
-@RequestMapping(value="/api/person")
+@RequestMapping(value="/api/movie")
 public class MovieQueryController 
 {
 	@Autowired
@@ -29,4 +29,10 @@ public class MovieQueryController
     {		
 		return movieServiceImpl.getMoviesByPersonId(id);
     }
+	
+	@GetMapping()
+	public List<Movie> findAllMovies()
+	{
+		return movieServiceImpl.findAllMovies();
+	}
 }

@@ -9,5 +9,7 @@ public interface MovieService
 {
 	List<Movie> getMoviesByPersonId(Long id);
 	
+	List<Movie> findAllMovies();
+	
 	Movie createMovieForPerson(Long id, MovieCreateRequest movie);
 }
