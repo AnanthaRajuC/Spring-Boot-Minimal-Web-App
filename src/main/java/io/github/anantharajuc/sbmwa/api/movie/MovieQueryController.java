@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.api;
+package io.github.anantharajuc.sbmwa.api.movie;
 
 import java.util.List;
 

@@ -1,8 +1,10 @@
-package io.github.anantharajuc.sbmwa.api;
+package io.github.anantharajuc.sbmwa.api.person;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
@@ -40,7 +42,7 @@ public class PersonQueryController
 		
 		return new ResponseEntity<>(personServiceImpl.getAllPersons(), headers, HttpStatus.OK);
     }
-	
+
 	/**
      * Get a Person by id.
      * 

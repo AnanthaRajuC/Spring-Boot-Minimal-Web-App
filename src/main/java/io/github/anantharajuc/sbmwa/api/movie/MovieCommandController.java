@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.api;
+package io.github.anantharajuc.sbmwa.api.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
