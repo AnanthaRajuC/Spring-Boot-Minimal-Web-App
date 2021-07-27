@@ -74,6 +74,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+		<dependency>
+		    <groupId>org.atteo</groupId>
+		    <artifactId>evo-inflector</artifactId>
+		    <version>1.3</version>
+		</dependency>
 		
 		<!-- Start - POJO creation made easy -->
 		<dependency>

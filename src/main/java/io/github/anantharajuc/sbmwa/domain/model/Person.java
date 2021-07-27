@@ -13,6 +13,7 @@ import javax.validation.constraints.Email;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.github.anantharajuc.sbmwa.domain.model.common.AuditEntity;
@@ -33,6 +34,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@JsonIgnoreProperties({"books", "movies","address"}) 
 public class Person extends AuditEntity
 {
 	private static final long serialVersionUID = 1L;
@@ -46,16 +48,16 @@ public class Person extends AuditEntity
 	
 	@Column(name="mobile_number", nullable = true)
 	String mobileNumber;
-	
+
 	@JsonManagedReference
 	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name="address_id")
 	Address address;
-	
+
 	@OneToMany(targetEntity = Books.class,cascade = CascadeType.ALL)
     @JoinColumn(name="person_id",referencedColumnName="id")
     private List<Books> books;
-	
+
 	@OneToMany(mappedBy="person")
 	private List<Movie> movies;
 }
