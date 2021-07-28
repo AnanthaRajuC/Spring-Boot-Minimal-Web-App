@@ -11,5 +11,7 @@ public interface MovieService
 	
 	List<Movie> findAllMovies();
 	
+	Movie getMovieById(Long id);
+	
 	Movie createMovieForPerson(Long id, MovieCreateRequest movie);
 }

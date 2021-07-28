@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import io.github.anantharajuc.sbmwa.domain.model.Address;
 import io.github.anantharajuc.sbmwa.domain.model.Books;
+import io.github.anantharajuc.sbmwa.domain.model.Movie;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
@@ -97,5 +98,21 @@ public class PersonServiceImpl implements PersonService
 		}
 		
 		return personRepository.save(person);
+	}
+
+	@Override
+	public List<Books> findPersonsBooks(Long id) 
+	{
+		log.info("-----> findPersonsBooks service");
+		
+		return booksRepository.getBooksByPersonId(id); 
+	}
+
+	@Override
+	public List<Movie> findPersonMovies(Long id) 
+	{
+		log.info("-----> findPersonMovies service");
+		
+		return null;
 	}
 }

@@ -1,5 +1,7 @@
 package io.github.anantharajuc.sbmwa.api.person;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.anantharajuc.sbmwa.api.hateoas.PersonRepresentationModelAssembler;
+import io.github.anantharajuc.sbmwa.domain.model.Books;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.impl.PersonServiceImpl;
@@ -50,12 +53,18 @@ public class PersonQueryController
      * 
      * @param id. The persons id         
      * @return the person
-     */
+     */	
 	@GetMapping(value = "/persons/{id}", produces = "application/json")
-    public ResponseEntity<Person> getPerson(@PathVariable("id") Long id) 
+    public ResponseEntity<EntityModel<Person>> getPerson(@PathVariable("id") Long id) 
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
 
-        return new ResponseEntity<>(personServiceImpl.getPersonById(id), headers, HttpStatus.OK);
+        return new ResponseEntity<>(personRepresentationModelAssembler.toModel(personServiceImpl.getPersonById(id)), headers, HttpStatus.OK); 
     }
+	
+	@GetMapping(value = "/persons/{id}/books", produces = "application/json")
+	public ResponseEntity<List<Books>> getPersonsBooks(@PathVariable("id") Long id)
+	{
+		return ResponseEntity.ok(personServiceImpl.findPersonsBooks(id));	
+	}
 }

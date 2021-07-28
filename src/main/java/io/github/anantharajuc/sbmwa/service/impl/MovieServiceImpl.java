@@ -61,4 +61,13 @@ public class MovieServiceImpl implements MovieService
 		
 		return movieRepository.findAll();
 	}
+
+	@Override
+	public Movie getMovieById(Long id) 
+	{
+		log.info("-----> getMovieById service");
+		
+		return movieRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Movie", "id", id));
+	}
 }

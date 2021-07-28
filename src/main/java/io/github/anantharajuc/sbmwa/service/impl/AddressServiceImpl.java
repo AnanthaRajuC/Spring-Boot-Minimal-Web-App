@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.github.anantharajuc.sbmwa.domain.model.Address;
+import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
 import io.github.anantharajuc.sbmwa.service.AddressService;
 import lombok.extern.log4j.Log4j2;
@@ -23,5 +24,12 @@ public class AddressServiceImpl implements AddressService
 		log.info("-----> findAllAddress service");
 		
 		return addressRepository.findAll();
+	}
+
+	@Override
+	public Address findAddressById(Long id) 
+	{
+		return addressRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Address", "id", id));
 	}
 }

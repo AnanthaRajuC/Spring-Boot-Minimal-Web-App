@@ -13,15 +13,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.github.anantharajuc.sbmwa.domain.model.common.AuditEntity;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name="movies")
 @EntityListeners(AuditingEntityListener.class)
+@AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Getter
 @Setter
 @FieldDefaults(level=AccessLevel.PRIVATE)

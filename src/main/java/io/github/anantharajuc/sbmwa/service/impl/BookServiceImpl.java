@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.github.anantharajuc.sbmwa.domain.model.Books;
+import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.BooksRepository;
 import io.github.anantharajuc.sbmwa.service.BookService;
 import lombok.extern.log4j.Log4j2;
@@ -23,5 +24,14 @@ public class BookServiceImpl implements BookService
 		log.info("-----> findAllBooks service");
 		
 		return booksRepository.findAll();
+	}
+
+	@Override
+	public Books findBookById(Long id) 
+	{
+		log.info("-----> findBookById service");
+		
+		return booksRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Book", "id", id));
 	}
 }
