@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.api.person;
+package io.github.anantharajuc.sbmwa.api.controller.person;
 
 import javax.validation.Valid;
 

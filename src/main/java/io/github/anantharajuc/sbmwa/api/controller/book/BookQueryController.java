@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.api.book;
+package io.github.anantharajuc.sbmwa.api.controller.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;

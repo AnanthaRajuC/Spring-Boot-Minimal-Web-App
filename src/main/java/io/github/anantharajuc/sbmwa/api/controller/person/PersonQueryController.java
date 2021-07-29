@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.api.person;
+package io.github.anantharajuc.sbmwa.api.controller.person;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.github.anantharajuc.sbmwa.api.hateoas.PersonRepresentationModelAssembler;
 import io.github.anantharajuc.sbmwa.domain.model.Books;
+import io.github.anantharajuc.sbmwa.domain.model.Movie;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.impl.PersonServiceImpl;
@@ -66,5 +67,11 @@ public class PersonQueryController
 	public ResponseEntity<List<Books>> getPersonsBooks(@PathVariable("id") Long id)
 	{
 		return ResponseEntity.ok(personServiceImpl.findPersonsBooks(id));	
+	}
+	
+	@GetMapping(value = "/persons/{id}/movies", produces = "application/json")
+	public ResponseEntity<List<Movie>> getPersonsMovies(@PathVariable("id") Long id)
+	{
+		return ResponseEntity.ok(personServiceImpl.findPersonMovies(id));
 	}
 }

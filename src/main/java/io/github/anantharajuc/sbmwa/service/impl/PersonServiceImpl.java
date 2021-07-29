@@ -12,6 +12,7 @@ import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
 import io.github.anantharajuc.sbmwa.repository.BooksRepository;
+import io.github.anantharajuc.sbmwa.repository.MovieRepository;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.PersonService;
 import lombok.extern.log4j.Log4j2;
@@ -25,6 +26,9 @@ public class PersonServiceImpl implements PersonService
 	
 	@Autowired
 	AddressRepository addressRepository;
+	
+	@Autowired
+	MovieRepository movieRepository;
 	
 	@Autowired
 	BooksRepository booksRepository;
@@ -113,6 +117,6 @@ public class PersonServiceImpl implements PersonService
 	{
 		log.info("-----> findPersonMovies service");
 		
-		return null;
+		return movieRepository.getMoviesByPersonId(id); 
 	}
 }

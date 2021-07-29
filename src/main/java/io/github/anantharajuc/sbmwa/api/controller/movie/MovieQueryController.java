@@ -1,4 +1,4 @@
-package io.github.anantharajuc.sbmwa.api.movie;
+package io.github.anantharajuc.sbmwa.api.controller.movie;
 
 import java.util.List;
 

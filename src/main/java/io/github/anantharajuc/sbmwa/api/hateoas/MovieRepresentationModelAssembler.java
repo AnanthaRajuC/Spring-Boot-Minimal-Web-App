@@ -7,8 +7,8 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Component;
 
+import io.github.anantharajuc.sbmwa.api.controller.movie.MovieQueryController;
 import io.github.anantharajuc.sbmwa.api.hateoas.common.SimpleIdentifiableRepresentationModelAssembler;
-import io.github.anantharajuc.sbmwa.api.movie.MovieQueryController;
 import io.github.anantharajuc.sbmwa.domain.model.Movie;
 
 @Component

@@ -7,10 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.anantharajuc.sbmwa.api.address.AddressQueryController;
-import io.github.anantharajuc.sbmwa.api.book.BookQueryController;
-import io.github.anantharajuc.sbmwa.api.movie.MovieQueryController;
-import io.github.anantharajuc.sbmwa.api.person.PersonQueryController;
+import io.github.anantharajuc.sbmwa.api.controller.address.AddressQueryController;
+import io.github.anantharajuc.sbmwa.api.controller.book.BookQueryController;
+import io.github.anantharajuc.sbmwa.api.controller.movie.MovieQueryController;
+import io.github.anantharajuc.sbmwa.api.controller.person.PersonQueryController;
 
 @RestController
 public class RootController 

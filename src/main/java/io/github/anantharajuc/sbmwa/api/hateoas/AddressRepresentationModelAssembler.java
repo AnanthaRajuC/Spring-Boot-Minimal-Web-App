@@ -7,7 +7,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Component;
 
-import io.github.anantharajuc.sbmwa.api.address.AddressQueryController;
+import io.github.anantharajuc.sbmwa.api.controller.address.AddressQueryController;
 import io.github.anantharajuc.sbmwa.api.hateoas.common.SimpleIdentifiableRepresentationModelAssembler;
 import io.github.anantharajuc.sbmwa.domain.model.Address;
 
