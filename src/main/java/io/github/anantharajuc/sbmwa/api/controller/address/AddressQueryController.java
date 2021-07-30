@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.anantharajuc.sbmwa.api.hateoas.AddressRepresentationModelAssembler;
+import io.github.anantharajuc.sbmwa.api.hateoas.PersonRepresentationModelAssembler;
 import io.github.anantharajuc.sbmwa.domain.model.Address;
+import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.service.impl.AddressServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -24,6 +26,9 @@ public class AddressQueryController
 {
 	@Autowired
 	AddressServiceImpl addressServiceImpl;
+	
+	@Autowired
+	private PersonRepresentationModelAssembler personRepresentationModelAssembler;
 	
 	@Autowired
 	private AddressRepresentationModelAssembler addressRepresentationModelAssembler;
@@ -42,5 +47,13 @@ public class AddressQueryController
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
 		
 		return new ResponseEntity<>(addressRepresentationModelAssembler.toModel(addressServiceImpl.findAddressById(id)), headers, HttpStatus.OK); 
+	}
+	
+	@GetMapping(value = "/addresses/{id}/person", produces = "application/json")
+	public ResponseEntity<EntityModel<Person>> getPersonByAddressId(@PathVariable("id") Long id)
+	{
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
+		
+		return new ResponseEntity<>(personRepresentationModelAssembler.toModel(addressServiceImpl.findPersonByAddressId(id)), headers, HttpStatus.OK); 
 	}
 }

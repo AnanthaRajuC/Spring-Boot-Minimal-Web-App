@@ -23,10 +23,12 @@ public class AddressRepresentationModelAssembler extends SimpleIdentifiableRepre
 	public void addLinks(EntityModel<Address> resource)
 	{
 		super.addLinks(resource);
+		
+		resource.add(linkTo(methodOn(AddressQueryController.class).getPersonByAddressId(resource.getContent().getId())).withRel("person"));
 	}
 	
 	@Override
-	public void addLinks(CollectionModel<EntityModel<Address>> resources) 
+	public void addLinks(CollectionModel<EntityModel<Address>> resources)  
 	{
 		super.addLinks(resources);
 		

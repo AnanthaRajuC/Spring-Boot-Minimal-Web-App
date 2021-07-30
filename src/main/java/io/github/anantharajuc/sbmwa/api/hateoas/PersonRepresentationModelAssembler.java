@@ -7,7 +7,6 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Component;
 
-import io.github.anantharajuc.sbmwa.api.controller.book.BookQueryController;
 import io.github.anantharajuc.sbmwa.api.controller.person.PersonQueryController;
 import io.github.anantharajuc.sbmwa.api.hateoas.common.SimpleIdentifiableRepresentationModelAssembler;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
@@ -26,6 +25,8 @@ public class PersonRepresentationModelAssembler extends SimpleIdentifiableRepres
 		super.addLinks(resource);
 		
 		resource.add(linkTo(methodOn(PersonQueryController.class).getPersonsBooks(resource.getContent().getId())).withRel("books")); 
+		resource.add(linkTo(methodOn(PersonQueryController.class).getPersonsMovies(resource.getContent().getId())).withRel("movies")); 
+		resource.add(linkTo(methodOn(PersonQueryController.class).getPersonsAddress(resource.getContent().getId())).withRel("address")); 
 	}
 	
 	@Override
@@ -33,7 +34,6 @@ public class PersonRepresentationModelAssembler extends SimpleIdentifiableRepres
 	{
 		super.addLinks(resources);
 		
-		resources.add(linkTo(methodOn(BookQueryController.class).getAllBooks()).withRel("books"));
 		resources.add(linkTo(methodOn(RootController.class).root()).withRel("root"));
 		
 	}

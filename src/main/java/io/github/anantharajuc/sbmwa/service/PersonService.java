@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
+import io.github.anantharajuc.sbmwa.domain.model.Address;
 import io.github.anantharajuc.sbmwa.domain.model.Books;
 import io.github.anantharajuc.sbmwa.domain.model.Movie;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
@@ -23,4 +24,6 @@ public interface PersonService
 	List<Books> findPersonsBooks(Long id);
 	
 	List<Movie> findPersonMovies(Long id);
+	
+	Address findPersonsAddress(Long id);
 }

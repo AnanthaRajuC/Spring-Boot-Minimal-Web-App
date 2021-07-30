@@ -1,7 +1,5 @@
 package io.github.anantharajuc.sbmwa.api.controller.person;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -14,11 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.anantharajuc.sbmwa.api.hateoas.AddressRepresentationModelAssembler;
+import io.github.anantharajuc.sbmwa.api.hateoas.BooksRepresentationModelAssembler;
+import io.github.anantharajuc.sbmwa.api.hateoas.MovieRepresentationModelAssembler;
 import io.github.anantharajuc.sbmwa.api.hateoas.PersonRepresentationModelAssembler;
+import io.github.anantharajuc.sbmwa.domain.model.Address;
 import io.github.anantharajuc.sbmwa.domain.model.Books;
 import io.github.anantharajuc.sbmwa.domain.model.Movie;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
-import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.impl.PersonServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -28,13 +29,19 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class PersonQueryController 
 {
 	@Autowired
-	PersonServiceImpl personServiceImpl;
-	
-	@Autowired
-	PersonRepository personRepository;
-	
+	private PersonServiceImpl personServiceImpl;
+
 	@Autowired
 	private PersonRepresentationModelAssembler personRepresentationModelAssembler;
+	
+	@Autowired
+	private AddressRepresentationModelAssembler addressRepresentationModelAssembler;
+	
+	@Autowired
+	private BooksRepresentationModelAssembler booksRepresentationModelAssembler;
+	
+	@Autowired
+	private MovieRepresentationModelAssembler movieRepresentationModelAssembler;
 	
 	/**
      * Retrieve all persons
@@ -64,14 +71,26 @@ public class PersonQueryController
     }
 	
 	@GetMapping(value = "/persons/{id}/books", produces = "application/json")
-	public ResponseEntity<List<Books>> getPersonsBooks(@PathVariable("id") Long id)
+	public ResponseEntity<CollectionModel<EntityModel<Books>>> getPersonsBooks(@PathVariable("id") Long id)
 	{
-		return ResponseEntity.ok(personServiceImpl.findPersonsBooks(id));	
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
+		
+		return new ResponseEntity<>(booksRepresentationModelAssembler.toCollectionModel(personServiceImpl.findPersonsBooks(id)), headers, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/persons/{id}/movies", produces = "application/json")
-	public ResponseEntity<List<Movie>> getPersonsMovies(@PathVariable("id") Long id)
+	public ResponseEntity<CollectionModel<EntityModel<Movie>>> getPersonsMovies(@PathVariable("id") Long id)
 	{
-		return ResponseEntity.ok(personServiceImpl.findPersonMovies(id));
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
+		
+		return new ResponseEntity<>(movieRepresentationModelAssembler.toCollectionModel(personServiceImpl.findPersonMovies(id)), headers, HttpStatus.OK); 
+	}
+
+	@GetMapping(value = "/persons/{id}/address", produces = "application/json")
+	public ResponseEntity<EntityModel<Address>> getPersonsAddress(@PathVariable("id") Long id)
+	{
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
+		
+		return new ResponseEntity<>(addressRepresentationModelAssembler.toModel(personServiceImpl.findPersonsAddress(id)), headers, HttpStatus.OK); 
 	}
 }

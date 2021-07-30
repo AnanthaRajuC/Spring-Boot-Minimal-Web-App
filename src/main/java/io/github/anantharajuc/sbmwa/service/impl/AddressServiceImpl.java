@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.github.anantharajuc.sbmwa.domain.model.Address;
+import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
+import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.AddressService;
 import lombok.extern.log4j.Log4j2;
 
@@ -17,6 +19,9 @@ public class AddressServiceImpl implements AddressService
 {
 	@Autowired
 	private AddressRepository addressRepository;
+	
+	@Autowired
+	private PersonRepository personRepository;
 	
 	@Override
 	public List<Address> findAllAddress() 
@@ -31,5 +36,11 @@ public class AddressServiceImpl implements AddressService
 	{
 		return addressRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Address", "id", id));
+	}
+
+	@Override
+	public Person findPersonByAddressId(Long id) 
+	{
+		return personRepository.findPersonByAddressId(id);
 	}
 }

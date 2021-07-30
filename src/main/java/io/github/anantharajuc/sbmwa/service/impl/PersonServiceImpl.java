@@ -119,4 +119,12 @@ public class PersonServiceImpl implements PersonService
 		
 		return movieRepository.getMoviesByPersonId(id); 
 	}
+
+	@Override
+	public Address findPersonsAddress(Long id) 
+	{
+		log.info("-----> findPersonsAddress service");
+
+		return personRepository.getById(id).getAddress();
+	}
 }
