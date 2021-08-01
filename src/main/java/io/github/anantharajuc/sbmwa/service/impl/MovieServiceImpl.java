@@ -70,4 +70,12 @@ public class MovieServiceImpl implements MovieService
 		return movieRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Movie", "id", id));
 	}
+
+	@Override
+	public List<Person> getPersonsByMovieId(Long id) 
+	{
+		log.info("-----> getPersonsByMovieId service");
+		
+		return null;
+	}
 }

@@ -65,7 +65,7 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Table structure for table `orders`
+-- Table structure for table `movies`
 --
 
 CREATE TABLE `movies` (

@@ -44,9 +44,20 @@ CREATE TABLE `books` (
   CONSTRAINT `FK5w75tx731o2t3abhgesnobgih` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
 );
 
+--
+-- Table structure for table `movies`
+--
 
 
-
-
+CREATE TABLE `movies` (
+  `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_modified_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `movie_details` varchar(255) NOT NULL,
+  `person_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `movies_person_fk` (`person_id`),
+  CONSTRAINT `movies_person_fk` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
+);
 
 

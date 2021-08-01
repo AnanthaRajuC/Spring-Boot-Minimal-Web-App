@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.anantharajuc.sbmwa.api.hateoas.MovieRepresentationModelAssembler;
+import io.github.anantharajuc.sbmwa.api.hateoas.PersonRepresentationModelAssembler;
 import io.github.anantharajuc.sbmwa.domain.model.Movie;
+import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.impl.MovieServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,13 +28,16 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class MovieQueryController 
 {
 	@Autowired
-	PersonRepository personRepository;
+	private PersonRepository personRepository;
 	
 	@Autowired
-	MovieServiceImpl movieServiceImpl;
+	private MovieServiceImpl movieServiceImpl;
 	
 	@Autowired
 	private MovieRepresentationModelAssembler movieRepresentationModelAssembler;
+	
+	@Autowired
+	private PersonRepresentationModelAssembler personRepresentationModelAssembler;
 	
 	@GetMapping(value = "/movies", produces = "application/json")
 	public ResponseEntity<CollectionModel<EntityModel<Movie>>> findAllMovies()
@@ -50,9 +55,10 @@ public class MovieQueryController
 		return new ResponseEntity<>(movieRepresentationModelAssembler.toModel(movieServiceImpl.getMovieById(id)), headers, HttpStatus.OK);
 	}
 	 
-	@GetMapping(value = "/movies/{id}/person", produces = "application/json")
+	@GetMapping(value = "/movies/{id}/persons", produces = "application/json")
     public List<Movie> getAllMoviesByPersonId(@PathVariable("id") Long id) 
     {		
 		return movieServiceImpl.getMoviesByPersonId(id);
     }
+	
 }

@@ -23,6 +23,8 @@ public class MovieRepresentationModelAssembler extends SimpleIdentifiableReprese
 	public void addLinks(EntityModel<Movie> resource)
 	{
 		super.addLinks(resource);
+		
+		resource.add(linkTo(methodOn(MovieQueryController.class).getAllMoviesByPersonId(resource.getContent().getId())).withRel("persons")); 
 	}
 	
 	@Override

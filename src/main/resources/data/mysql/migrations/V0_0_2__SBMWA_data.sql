@@ -27,9 +27,12 @@ INSERT INTO `person` (`name`,`email`,`mobile_number`,`address_id`) VALUES ('John
 INSERT INTO `books` (`title`,`person_id`) VALUES ('user1-book1',1);
 INSERT INTO `books` (`title`,`person_id`) VALUES ('user1-book2',1);
 INSERT INTO `books` (`title`,`person_id`) VALUES ('user2-book1',2);
+
 --
--- Data for table `orders`
+-- Data for table `movies`
 --
 
 INSERT INTO `movies` (`movie_details`,`person_id`) VALUES ('user1-movie-1',1);
+INSERT INTO `movies` (`movie_details`,`person_id`) VALUES ('common-movie',1);
 INSERT INTO `movies` (`movie_details`,`person_id`) VALUES ('user2-movie-2',2);
+INSERT INTO `movies` (`movie_details`,`person_id`) VALUES ('common-movie',2);
