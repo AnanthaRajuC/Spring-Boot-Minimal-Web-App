@@ -23,9 +23,9 @@ public class RootController
 		
 		model.add(linkTo(methodOn(RootController.class).root()).withSelfRel());
 		
-		model.add(linkTo(methodOn(PersonQueryController.class).getAllPersons()).withRel("persons"));
+		model.add(linkTo(methodOn(PersonQueryController.class).getAllPersons(null, null, null)).withRel("persons"));
 		model.add(linkTo(methodOn(MovieQueryController.class).findAllMovies()).withRel("movies"));
-		model.add(linkTo(methodOn(BookQueryController.class).getAllBooks()).withRel("books"));
+		model.add(linkTo(methodOn(BookQueryController.class).getAllBooks()).withRel("books")); 
 		model.add(linkTo(methodOn(AddressQueryController.class).getAllAddress()).withRel("address"));
 						
 		return ResponseEntity.ok(model);

@@ -1,7 +1,15 @@
 package io.github.anantharajuc.sbmwa.service.impl;
 
 import java.util.List;
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +17,8 @@ import io.github.anantharajuc.sbmwa.domain.model.Address;
 import io.github.anantharajuc.sbmwa.domain.model.Books;
 import io.github.anantharajuc.sbmwa.domain.model.Movie;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
+import io.github.anantharajuc.sbmwa.domain.util.PagingHeaders;
+import io.github.anantharajuc.sbmwa.domain.util.PagingResponse;
 import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
 import io.github.anantharajuc.sbmwa.repository.BooksRepository;
@@ -32,12 +42,72 @@ public class PersonServiceImpl implements PersonService
 	
 	@Autowired
 	BooksRepository booksRepository;
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	 /**
+     * get element using Criteria.
+     *
+     * @param spec    *
+     * @param headers pagination data
+     * @param sort    sort criteria
+     * @return retrieve elements with pagination
+     */
+    public PagingResponse get(Specification<Person> spec, HttpHeaders headers, Sort sort) 
+    {
+        if (isRequestPaged(headers)) 
+        {
+            return get(spec, buildPageRequest(headers, sort));
+        } 
+        else 
+        {
+            List<Person> entities = get(spec, sort);
+            
+            return new PagingResponse((long) entities.size(), 0L, 0L, 0L, 0L, entities);
+        }
+    }
+    
+    private boolean isRequestPaged(HttpHeaders headers) 
+    {
+        return headers.containsKey(PagingHeaders.PAGE_NUMBER.getName()) && headers.containsKey(PagingHeaders.PAGE_SIZE.getName());
+    }
+    
+    private Pageable buildPageRequest(HttpHeaders headers, Sort sort) 
+    {
+        int page = Integer.parseInt(Objects.requireNonNull(headers.get(PagingHeaders.PAGE_NUMBER.getName())).get(0));
+        int size = Integer.parseInt(Objects.requireNonNull(headers.get(PagingHeaders.PAGE_SIZE.getName())).get(0));
+        
+        return PageRequest.of(page, size, sort);
+    }
+    
+    public List<Person> get(Specification<Person> spec, Sort sort) 
+    {
+        return personRepository.findAll(spec, sort);
+    }
+    
+    /**
+     * get elements using Criteria.
+     *
+     * @param spec     *
+     * @param pageable pagination data
+     * @return retrieve elements with pagination
+     */
+    public PagingResponse get(Specification<Person> spec, Pageable pageable) 
+    {
+        Page<Person> page = personRepository.findAll(spec, pageable);
+        List<Person> content = page.getContent();
+        
+        return new PagingResponse(page.getTotalElements(), (long) page.getNumber(), (long) page.getNumberOfElements(), pageable.getOffset(), (long) page.getTotalPages(), content);
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 	public List<Person> getAllPersons() 
 	{
 		log.info("-----> getAllPersons service");
 		
-		return personRepository.findAll();
+		//return personRepository.findAll();
+		return null;
     }
 	
 	public Person getPersonById(Long id) 
@@ -125,6 +195,7 @@ public class PersonServiceImpl implements PersonService
 	{
 		log.info("-----> findPersonsAddress service");
 
-		return personRepository.getById(id).getAddress();
+		//return personRepository.getById(id).getAddress();
+		return null;
 	}
 }
