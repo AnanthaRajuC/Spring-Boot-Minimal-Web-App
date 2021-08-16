@@ -16,4 +16,6 @@ public interface BooksRepository extends JpaRepository<Books, Long>
 	@Query(value = "SELECT * FROM books WHERE person_id = :person_id",nativeQuery = true) 
 	@Transactional(readOnly=true)
     List<Books> getBooksByPersonId(@Param("person_id") Long person_id);
+
+	Books getBookByTitle(String title); 
 }
