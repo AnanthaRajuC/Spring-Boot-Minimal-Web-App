@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import io.github.anantharajuc.sbmwa.domain.dto.request.MovieCreateRequest;
@@ -17,6 +20,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
+@CacheConfig(cacheNames={"movie"}) // tells Spring where to store cache for this class
 public class MovieServiceImpl implements MovieService
 {
 	@Autowired
@@ -40,6 +44,8 @@ public class MovieServiceImpl implements MovieService
 	}
 
 	@Override
+	@CacheEvict(allEntries = true) 
+	//@CacheEvict annotation is used to indicate the removal of one or more/all values so that fresh values can be loaded into the cache again.	
 	public Movie createMovieForPerson(Long id, MovieCreateRequest request) 
 	{
 		log.info("-----> createMovieForPerson service");
@@ -55,6 +61,9 @@ public class MovieServiceImpl implements MovieService
 	}
 
 	@Override
+	@Cacheable 
+	//The findAllMovies() call will first check the cache, "movie" before actually invoking the method and then caching the result.
+	//If the "movie" cache contains the required result, the result is returned and the method is not invoked.
 	public List<Movie> findAllMovies() 
 	{
 		log.info("-----> findAllMovies service");

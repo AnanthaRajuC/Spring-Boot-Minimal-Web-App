@@ -3,6 +3,8 @@ package io.github.anantharajuc.sbmwa.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import io.github.anantharajuc.sbmwa.domain.model.Address;
@@ -14,6 +16,7 @@ import io.github.anantharajuc.sbmwa.service.AddressService;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
+@CacheConfig(cacheNames={"address"}) // tells Spring where to store cache for this class
 @Service
 public class AddressServiceImpl implements AddressService
 {
@@ -24,6 +27,9 @@ public class AddressServiceImpl implements AddressService
 	private PersonRepository personRepository;
 	
 	@Override
+	@Cacheable 
+	//The findAllAddress() call will first check the cache, "address" before actually invoking the method and then caching the result.
+	//If the "address" cache contains the required result, the result is returned and the method is not invoked.
 	public List<Address> findAllAddress() 
 	{
 		log.info("-----> findAllAddress service");

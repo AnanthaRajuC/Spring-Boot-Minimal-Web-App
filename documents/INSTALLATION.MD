@@ -36,7 +36,7 @@ The code can also be built into a jar and then executed/run. Once the jar is bui
 ```shell
 $ git clone https://github.com/AnanthaRajuC/Spring-Boot-Minimal-Web-App.git
 $ cd Spring-Boot-Minimal-Web-App
-$ mvn clean package
+$ mvn package -Dmaven.test.skip=true
 ```
 
 Now you should expect output like this:

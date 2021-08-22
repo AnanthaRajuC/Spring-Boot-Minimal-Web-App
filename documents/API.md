@@ -1,4 +1,4 @@
-## API
+## HATEOAS - Hypermedia API
 
 #### Web URLs
 
@@ -8,13 +8,50 @@
 
 #### Explore Rest APIs
 
-| RESTful URL                      | HTTP Action | Noun |Business Operation |Sample Valid Request Body | 
-|----------------------------------|-------------|------|-------------------|--------------------------|
-|`/api/person`                     |GET          |person|get all persons    |                          |  
-|`/api/person`                     |POST         |person|create person      |[JSON](#person)           |  
-|`/api/person/{id}`                |PUT          |person|update person      |[JSON](#person)           | 
-|`/api/person/{id}`                |GET          |person|get person by id   |                          |  
-|`/api/person/{id}`                |DELETE       |person|delete person by id|                          | 
+Naviagte to the root URL : [http://localhost:8080/](http://localhost:8080/)
+
+<img src="images\url-root.PNG"/>
+
+##### Person APIs
+
+| RESTful URL                      | HTTP Action | Noun  |Business Operation |Remarks                    | 
+|----------------------------------|-------------|-------|-------------------|---------------------------|
+|`/api/persons`                    |GET          |persons|get all persons    |                           |  
+|`/api/persons`                    |POST         |persons|create person      |[Sample JSON Body](#person)|  
+|`/api/persons/{id}`               |PUT          |persons|update person      |[Sample JSON Body](#person)|  
+|`/api/persons/{id}`               |GET          |persons|get person by id   |                           |  
+|`/api/persons/{id}`               |DELETE       |persons|delete person by id|                           | 
+
+##### Person APIs others
+
+| RESTful URL                      | HTTP Action | Noun  |Business Operation         |Remarks                    | 
+|----------------------------------|-------------|-------|---------------------------|---------------------------|
+|`/api/persons/{id}/books`         |GET          |books  |get all books of person    |                           |  
+|`/api/persons/{id}/movies`        |GET          |movies |get all movies of person   |                           |  
+|`/api/persons/{id}/address`       |GET          |address|get address of person      |                           |  
+
+##### Address APIs
+
+| RESTful URL                      | HTTP Action | Noun  |Business Operation         |Remarks                    | 
+|----------------------------------|-------------|-------|---------------------------|---------------------------|
+|`/api/addresses`                  |GET          |address|get all addresses          |                           | 
+|`/api/addresses/{id}`             |GET          |address|get address by address id  |                           | 
+|`/api/addresses/{id}/person`      |GET          |address|get person by address id   |                           | 
+
+##### Books APIs
+
+| RESTful URL                      | HTTP Action | Noun  |Business Operation         |Remarks                    | 
+|----------------------------------|-------------|-------|---------------------------|---------------------------|
+|`/api/bookses`                    |GET          |bookses|get all books              |                           | 
+|`/api/bookses/{id}`               |GET          |bookses|get a book by id           |                           | 
+
+##### Movies APIs
+
+| RESTful URL                      | HTTP Action | Noun  |Business Operation         |Remarks                    | 
+|----------------------------------|-------------|-------|---------------------------|---------------------------|
+|`/api/movies`                     |GET          |movies |get all movies             |                           | 
+|`/api/movies/{id}`                |GET          |movies |get a movie by id          |                           | 
+|`/api/movies/{id}/persons`        |GET          |movies |get a movie by id          | Test Pending              | 
 
 ##### Sample Valid JSON Request Body
 

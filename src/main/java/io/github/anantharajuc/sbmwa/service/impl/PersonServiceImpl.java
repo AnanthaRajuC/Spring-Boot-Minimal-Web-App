@@ -101,13 +101,20 @@ public class PersonServiceImpl implements PersonService
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    @Override
+	public Address findPersonsAddress(Long id) 
+	{
+		log.info("-----> findPersonsAddress service");
+
+		return personRepository.findById(id).get().getAddress();
+	}
 		
 	public List<Person> getAllPersons() 
 	{
 		log.info("-----> getAllPersons service");
-		
-		//return personRepository.findAll();
-		return null;
+
+		return (List<Person>) personRepository.findAll();
     }
 	
 	public Person getPersonById(Long id) 
@@ -188,14 +195,5 @@ public class PersonServiceImpl implements PersonService
 		log.info("-----> findPersonMovies service");
 		
 		return movieRepository.getMoviesByPersonId(id); 
-	}
-
-	@Override
-	public Address findPersonsAddress(Long id) 
-	{
-		log.info("-----> findPersonsAddress service");
-
-		//return personRepository.getById(id).getAddress();
-		return null;
 	}
 }

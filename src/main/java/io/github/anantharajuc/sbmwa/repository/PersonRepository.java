@@ -1,6 +1,5 @@
 package io.github.anantharajuc.sbmwa.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import io.github.anantharajuc.sbmwa.domain.model.Person;
 
 @Repository
-//public interface PersonRepository extends JpaRepository<Person, Long>
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long>, JpaSpecificationExecutor<Person>
 {
 	@Query(value = "SELECT * FROM person WHERE address_id = :address_id",nativeQuery = true) 

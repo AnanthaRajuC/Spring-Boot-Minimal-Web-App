@@ -1,7 +1,5 @@
 package io.github.anantharajuc.sbmwa.api.controller.person;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -74,31 +71,15 @@ public class PersonQueryController
         
         return headers;
     }
-	
-	@Transactional
-    @GetMapping(value = "/p", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<Person>> get(
-            @And({
-                    @Spec(path = "name", params = "name", spec = Equal.class),
-                    @Spec(path = "email", params = "email", spec = Like.class),
-                    @Spec(path = "country", params = "country", spec = In.class),
-                    @Spec(path = "id", params = "id", spec = Equal.class),
-                    @Spec(path = "createDate", params = "createDate", spec = Equal.class),
-                    @Spec(path = "createDate", params = {"createDateGt", "createDateLt"}, spec = Between.class)
-            }) Specification<Person> spec, Sort sort, @RequestHeader HttpHeaders headers) 
-	{
-        final PagingResponse response = personServiceImpl.get(spec, headers, sort);
-        
-        return new ResponseEntity<>(response.getElements(), returnHttpHeaders(response), HttpStatus.OK);
-    }
-	
+
 	/**
      * Retrieve all persons
      * 
      * @return List<Person> with all persons
      */	
+	@Transactional
 	@GetMapping(value = "/persons", produces = "application/json")
+	@ResponseStatus(HttpStatus.OK)
     public ResponseEntity<CollectionModel<EntityModel<Person>>> getAllPersons(
     		@And({
     			@Spec(path = "id", params = "id", spec = Equal.class),
@@ -114,19 +95,6 @@ public class PersonQueryController
 		return new ResponseEntity<>(personRepresentationModelAssembler.toCollectionModel(response.getElements()), returnHttpHeaders(response), HttpStatus.OK); 
     }
 	
-	/**
-     * Retrieve all persons
-     * 
-     * @return List<Person> with all persons
-     */	
-	/*@GetMapping(value = "/persons", produces = "application/json")
-    public ResponseEntity<CollectionModel<EntityModel<Person>>> getAllPersons() 
-	{
-		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
-		
-		return new ResponseEntity<>(personRepresentationModelAssembler.toCollectionModel(personServiceImpl.getAllPersons()), headers, HttpStatus.OK); 
-    }*/
-
 	/**
      * Get a Person by id.
      * 
