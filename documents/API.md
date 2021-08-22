@@ -12,6 +12,20 @@ Naviagte to the root URL : [http://localhost:8080/](http://localhost:8080/)
 
 <img src="images\url-root.PNG"/>
 
+- **Filtering:** 
+to narrow down the query results by specific parameters, eg. id, or email
+```
+GET /api/persons?email=example1@domain.com
+GET /api/cars?id=3
+```
+
+- **Sorting:** 
+basically allows sorting the results ascending or descending by a chosen parameter or parameters, eg. by name
+```
+GET /api/cars?sort=name,asc
+GET /api/cars?sort=name,desc
+```
+
 ##### Person APIs
 
 | RESTful URL                      | HTTP Action | Noun  |Business Operation |Remarks                    | 
