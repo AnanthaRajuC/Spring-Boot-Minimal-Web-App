@@ -27,6 +27,10 @@ CREATE TABLE `person` (
   `name` VARCHAR(128),
   `email` VARCHAR(128),
   `mobile_number` VARCHAR(128),
+  `dob` date DEFAULT NULL,
+  `gender` varchar(255) NOT NULL,
+  `is_adult` bit(1) NOT NULL,
+  `age` int(11) DEFAULT NULL,
   `address_id` bigint(20)
 );
 

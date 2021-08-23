@@ -7,133 +7,206 @@
 	},
 	"item": [
 		{
-			"name": "Command",
+			"name": "Person",
 			"item": [
 				{
-					"name": "Update Person",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"John-update\",\r\n    \"email\": \"example1-update@domain.com\",\r\n    \"mobileNumber\": \"1234771\",\r\n    \"address\": {\r\n        \"city\": \"Wisokyburghh-update\",\r\n        \"zipcode\": \"9077-777\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Command",
+					"item": [
+						{
+							"name": "Update Person",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John-update\",\r\n    \"email\": \"example1-update@domain.com\",\r\n    \"mobileNumber\": \"1234771\",\r\n    \"address\": {\r\n        \"city\": \"Wisokyburghh-update\",\r\n        \"zipcode\": \"9077-777\"\r\n    },\r\n    \"books\":[{\"title\":\"book33-u\"},{\"title\":\"book34-u\"}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/person/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"person",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:8080/api/person/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"person",
-								"1"
-							]
+						{
+							"name": "Create Person",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"aws6\",\r\n    \"email\": \"examplt6@domain.com\",\r\n    \"mobileNumber\": \"123477621\",\r\n\t\"gender\": \"FEMALE\",\r\n    \"age\": 6,\r\n    \"isAdult\": false,\r\n    \"address\": {\r\n        \"city\": \"Wisopburgh-aws\",\r\n        \"zipcode\": \"9077-777\"\r\n    },\r\n    \"books\":[{\"title\":\"book33\"},{\"title\":\"book33\"}],\r\n    \"movies\":[{\"movie_details\":\"book331\"},{\"movie_details\":\"book332\"}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/person",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"person"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Person",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/person/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"person",
+										"2"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Create Person",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"aws\",\r\n    \"email\": \"examplt4@domain.com\",\r\n    \"mobileNumber\": \"1234771\",\r\n    \"address\": {\r\n        \"city\": \"Wisopburgh-aws\",\r\n        \"zipcode\": \"9077-777\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Query",
+					"item": [
+						{
+							"name": "Get All Persons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/persons",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"persons"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:8080/api/person",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"person"
-							]
+						{
+							"name": "Get Person by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/persons/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"persons",
+										"1"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Person",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/person/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"person",
-								"3"
-							]
-						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
 		{
-			"name": "Query",
+			"name": "Movie",
 			"item": [
 				{
-					"name": "Get All Persons",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/person",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"person"
-							]
+					"name": "Query",
+					"item": [
+						{
+							"name": "Get Movies by Person Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/person/1/movies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"person",
+										"1",
+										"movies"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Get Person by Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/person/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"person",
-								"1"
-							]
+					"name": "Command",
+					"item": [
+						{
+							"name": "Create Movie for Person",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n    {\r\n        \"movieDetails\": \"movie-3\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/person/1/movies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"person",
+										"1",
+										"movies"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		}

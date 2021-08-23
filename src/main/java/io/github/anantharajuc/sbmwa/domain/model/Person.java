@@ -1,10 +1,14 @@
 package io.github.anantharajuc.sbmwa.domain.model;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -13,6 +17,7 @@ import javax.validation.constraints.Email;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -48,6 +53,20 @@ public class Person extends AuditEntity
 	
 	@Column(name="mobile_number", nullable = true)
 	String mobileNumber;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="gender", nullable=false)
+	GenderEnum gender;
+	
+	@Column(name="age", nullable=true)
+	int age;
+	
+	@JsonFormat(pattern="yyyy-MM-dd", timezone="Asia/Kolkata")
+	@Column(name="dob", nullable = true)
+	Date dob;
+	
+	@Column(name = "is_adult", nullable=false, length=1)
+	Boolean isAdult;
 
 	@JsonManagedReference
 	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true)
