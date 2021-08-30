@@ -5,6 +5,10 @@
 # https://docs.travis-ci.com/user/reference/overview/#linux
 dist: xenial
 
+services:
+# Linking Travis CI and Docker
+  - docker
+
 # This enables the 'defaults' to test java applications:
 language: java
 
@@ -16,6 +20,8 @@ jdk:
 
 before_install:
 - mvn clean
+- echo "$DOCKER_PASS" | docker login  -u "$DOCKER_USER" --password-stdin
+- docker pull openjdk:8-jdk-alpine
 
 # git strips the wrapper jar file so we have to force its download during the build
 install:
