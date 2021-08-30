@@ -1,6 +1,5 @@
 package io.github.anantharajuc.sbmwa.domain.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -14,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.github.anantharajuc.sbmwa.domain.model.common.AuditEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +36,7 @@ import lombok.experimental.FieldDefaults;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
+@Builder
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -44,6 +46,7 @@ public class Person extends AuditEntity
 {
 	private static final long serialVersionUID = 1L;
 	
+	@NotNull(message = "First Name cannot be null")
 	@Column(name="name", nullable = false)
 	String name;
 	

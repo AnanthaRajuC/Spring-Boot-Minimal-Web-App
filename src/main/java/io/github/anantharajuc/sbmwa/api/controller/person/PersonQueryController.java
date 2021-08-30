@@ -30,6 +30,12 @@ import io.github.anantharajuc.sbmwa.domain.model.Person;
 import io.github.anantharajuc.sbmwa.domain.util.PagingHeaders;
 import io.github.anantharajuc.sbmwa.domain.util.PagingResponse;
 import io.github.anantharajuc.sbmwa.service.impl.PersonServiceImpl;
+
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
@@ -101,8 +107,12 @@ public class PersonQueryController
      * @param id. The persons id         
      * @return the person
      */	
+	@Operation(summary = "Get a Person by id.")
+	@ApiResponse(responseCode = "200", description = "Found the person", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = Person.class))})
+	@ApiResponse(responseCode = "404", description = "Person not found", content = @Content)
+	@ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content)
 	@GetMapping(value = "/persons/{id}", produces = "application/json")
-    public ResponseEntity<EntityModel<Person>> getPerson(@PathVariable("id") Long id) 
+    public ResponseEntity<EntityModel<Person>> getPerson(@Parameter(description = "id of the Person to be searched") @PathVariable("id") Long id) 
 	{
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
 
