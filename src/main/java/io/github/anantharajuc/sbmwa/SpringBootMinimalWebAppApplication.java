@@ -1,5 +1,7 @@
 package io.github.anantharajuc.sbmwa;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 
 import org.springframework.boot.SpringApplication;
@@ -27,6 +29,19 @@ public class SpringBootMinimalWebAppApplication
 		SpringApplication.run(SpringBootMinimalWebAppApplication.class, args);
 		
 		log.info("-----> Started Spring Boot Minimal Web App - "+LocalDateTime.now());
+		
+		try 
+		{
+			InetAddress ip = InetAddress.getLocalHost();
+			
+			log.info("-----> Host - "+ip);
+		} 
+		catch (UnknownHostException e) 
+		{
+			log.error("Unknown Host Exception", e);
+		}
+		
+		
 		
 		Dotenv dotenv = Dotenv.load();
 		
