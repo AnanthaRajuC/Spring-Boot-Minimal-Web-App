@@ -13,9 +13,7 @@ import io.github.anantharajuc.sbmwa.infra.exception.ResourceNotFoundException;
 import io.github.anantharajuc.sbmwa.repository.AddressRepository;
 import io.github.anantharajuc.sbmwa.repository.PersonRepository;
 import io.github.anantharajuc.sbmwa.service.AddressService;
-import lombok.extern.log4j.Log4j2;
 
-@Log4j2
 @CacheConfig(cacheNames={"address"}) // tells Spring where to store cache for this class
 @Service
 public class AddressServiceImpl implements AddressService
@@ -26,27 +24,30 @@ public class AddressServiceImpl implements AddressService
 	@Autowired
 	private PersonRepository personRepository;
 	
+	/*
+	 * The findAllAddress() call will first check the cache, "address" before actually invoking the method and then caching the result.
+	 * If the "address" cache contains the required result, the result is returned and the method is not invoked.
+	 */
 	@Override
 	@Cacheable 
-	//The findAllAddress() call will first check the cache, "address" before actually invoking the method and then caching the result.
-	//If the "address" cache contains the required result, the result is returned and the method is not invoked.
 	public List<Address> findAllAddress() 
 	{
-		log.info("-----> findAllAddress service");
-		
-		return addressRepository.findAll();
+		return addressRepository
+				.findAll();
 	}
 
 	@Override
 	public Address findAddressById(Long id) 
 	{
-		return addressRepository.findById(id)
+		return addressRepository
+				.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Address", "id", id));
 	}
 
 	@Override
 	public Person findPersonByAddressId(Long id) 
 	{
-		return personRepository.findPersonByAddressId(id);
+		return personRepository
+				.findPersonByAddressId(id);
 	}
 }
